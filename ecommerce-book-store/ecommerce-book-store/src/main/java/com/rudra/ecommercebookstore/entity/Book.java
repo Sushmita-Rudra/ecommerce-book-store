@@ -45,7 +45,7 @@ public class Book {
 	private int unitsInStock;
 	
 	@Column(name = "date_created")
-	private Date dateCreated;
+	private Date createdOn;
 	
 	@Column(name = "last_updated")
 	private Date updatedOn;
@@ -119,11 +119,11 @@ public class Book {
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return createdOn;
 	}
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setDateCreated(Date createdOn) {
+		this.createdOn = createdOn;
 	}
 
 	public Date getUpdatedOn() {
@@ -146,7 +146,7 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", sku=" + sku + ", name=" + name + ", description=" + description + ", unitPrice="
 				+ unitPrice + ", imageUrl=" + imageUrl + ", active=" + active + ", unitsInStock=" + unitsInStock
-				+ ", dateCreated=" + dateCreated + ", updatedOn=" + updatedOn + ", category=" + category + "]";
+				+ ", dateCreated=" + createdOn + ", updatedOn=" + updatedOn + ", category=" + category + "]";
 	}
 
 	
