@@ -8,14 +8,16 @@ import {Book} from '../models/book';
   providedIn: 'root'
 })
 export class BookService {
+  
 
   private baseUrl = "http://localhost:8080/api/v1/books";
 
   constructor(private httpClient:HttpClient) { 
 
   }
-  getBooks() : Observable<Book[]>{
-  return this.httpClient.get<GetBooksResponse>(this.baseUrl).pipe(map(response => response._embedded.books))
+  getBooks(theCategoryId) : Observable<Book[]>{
+  const searchUrl = `${this.baseUrl}/search/categoryid?id=${theCategoryId}`
+  return this.httpClient.get<GetBooksResponse>(searchUrl).pipe(map(response => response._embedded.books))
   }
 }
 interface GetBooksResponse{
