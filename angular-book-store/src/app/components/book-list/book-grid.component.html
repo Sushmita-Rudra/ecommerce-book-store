@@ -1,21 +1,9 @@
 <div class="row">
-
     <div class="col-lg-3">
-
-
-        <div class="list-group">
-            <a routerLink="/category/1" routerLinkActive="bg-primary text-white font-weight-bold" class="list-group-item">Web developement</a>
-            <a routerLink="/category/2" routerLinkActive="bg-primary text-white font-weight-bold" class="list-group-item">Programming</a>
-            <a routerLink="/category/3" routerLinkActive="bg-primary text-white font-weight-bold" class="list-group-item">Database</a>
-        </div>
-
+      <app-book-category></app-book-category>
     </div>
-    <!-- /.col-lg-3 -->
-
     <div class="col-lg-9">
-
-
-    <div class="row">
+      <div class="row">
         <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of books">
             <div class="card h-100">
                 <a href="#"><img class="card-img-top img-responsive" [src]="book.imageUrl"></a>
