@@ -15,9 +15,12 @@
                     <p class="card-text text-truncate">{{book.description}}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary">Add Cart</button>
+                    <button class="btn btn-primary float-right">Add Cart</button>
                 </div>
             </div>
+        </div>
+        <div class = "alert alert-warning mt-3 col-md-12" *ngIf = "books?.length == 0">
+            No books found
         </div>
     
     </div>

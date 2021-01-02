@@ -11,7 +11,9 @@ import {Book} from '../../models/book';
 })
 export class BookListComponent implements OnInit {
  books:Book[];
- currentCategoryId:number; 
+ currentCategoryId: number; 
+  searchMode: boolean;
+  
 
   constructor(private _bookService:BookService,
     private _activateRoute : ActivatedRoute) { }
@@ -23,8 +25,22 @@ export class BookListComponent implements OnInit {
    
   }
 
-  listBooks(){
-   const hasCategoryId:boolean =  this._activateRoute.snapshot.paramMap.has("id");
+
+
+  listBooks() {
+    this.searchMode = this._activateRoute.snapshot.paramMap.has("keyword");
+    if (this.searchMode) {
+      //Go to search books
+      this.handleSearchListOfBooks();
+    } else {
+      //Go to just list of books
+      this.handleListOfBooks();
+    }
+  
+  }
+
+  handleListOfBooks() {
+  const hasCategoryId:boolean =  this._activateRoute.snapshot.paramMap.has("id");
    if(hasCategoryId){
         this.currentCategoryId = +this._activateRoute.snapshot.paramMap.get("id");
    }else{
@@ -33,6 +49,13 @@ export class BookListComponent implements OnInit {
 
    return this._bookService.getBooks(this.currentCategoryId).subscribe(data => this.books = data
    )
+  }
+
+  handleSearchListOfBooks() {
+
+    const keyword:string = this._activateRoute.snapshot.paramMap.get("keyword");
+    return this._bookService.searchBooksByKeyword(keyword).subscribe(data => this.books = data);
+    
   }
 
 }
